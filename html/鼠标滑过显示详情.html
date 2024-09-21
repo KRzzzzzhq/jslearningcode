@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滑过显示详情</title>
+    <!-- CSS -->
+    <style>
+        /* 清除默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            /* CSS3新盒子模型属性：控制WIDTH/HEIGHT是盒子最终的宽高 */
+            box-sizing: border-box;
+            margin: 20px auto;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid lightcoral;
+            position: relative;
+        }
+        .box .detail{
+            display: none;
+            position: absolute;
+            left: -1px;
+            top: 38px;
+            box-sizing: border-box;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: 1px solid lightcoral;
+        }
+        .box:hover .detail{
+            display: block;
+            z-index: -1;
+        }
+        .box:hover{
+            border-bottom-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!--  基于CSS实现，我们需要让详情区域是按钮的子元素-->
+    <div class="box">
+        <span>购物车</span>
+        <div class="detail">
+            购物车相关信息
+        </div>
+    </div>
+</body>
+</html>

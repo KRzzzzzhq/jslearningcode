@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+        ul{
+            list-style: none;
+        }
+        #box {
+            box-sizing: border-box;
+            margin: 20px auto;
+            padding: 20px;
+            width: 200px;
+            border: 2px solid lightblue;
+        }
+        #box li {
+            line-height: 35px;
+            border-bottom: 1px solid lightcoral;
+        }
+        #box li:nth-last-child(1){
+            border-bottom: none;
+        }
+        #box li:hover{
+            background-color: lightgreen;
+        }
+        /* 由于 JavaScript 直接设置的样式具有较高的优先级（即内联样式），它会覆盖 CSS 中定义的 :hover 伪类样式。 */
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li>第1个标签</li>
+        <li>第2个标签</li>
+        <li>第3个标签</li>
+        <li>第4个标签</li>
+        <li>第5个标签</li>
+    </ul>
+    <script>
+        // [context].getElementsByTagName([tagName]):在指定的context范围之内，通过标签名获取一组元素(元素集合HTMLCollection) =>集合和数组很相似，也是以数字索引作为属性名，有length属性存储长度，但是不是数组，属于“类数组”
+        let box = document.getElementById('box');
+        let list= document.getElementsByTagName('li');
+
+
+        // 自定义属性编程思想：
+        // 前期把一些值存储到元素的自定义属性上，后期需要用到的时候，直接从属性上获取这些值即可
+        for(let i=0;i<list.length;i++){
+            let curli =list[i];
+            let bg;
+            if(i%2===0){
+                bg='#FFF';
+            }
+            else{
+                bg='#DDD';
+            }
+            curli.style.backgroundColor=bg;
+            // 设置自定义属性myOriginBg用来存储每一个Li背景
+            curli.myOriginBg=bg;
+            curli.onmouseover=function(){
+                this.style.background='lightblue';
+            }
+
+            curli.onmouseout=function(){
+                this.style.background=this.myOriginBg;
+            }
+        }
+    </script>
+</body>
+</html>

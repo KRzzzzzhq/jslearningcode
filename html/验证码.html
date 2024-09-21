@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="code">
+    <button id="enter">确定</button>
+    <br>
+    <span id="codebox">aaaa                                                         </span>
+    <button id="change">看不清换一张</button>
+
+    <script>
+        let code =document.getElementById('code'),
+        codebox =document.getElementById('codebox'),
+        enter = document.getElementById('enter'),
+        change =document.getElementById('change');
+
+        function queryCode(){
+            let area ='ABCDEFGHIJKLMNOPORSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            
+            let result ='';
+            for(let i =0;i<4;i++){
+                // 每一次循环都获取一个随机的数字索引
+                let ran = Math.round(Math.random()*61);
+                //再根据获取的索引从范围字符串中找到对应的字符，把找到的字符拼接到最后的结果中
+                result += area.charAt(ran);
+               
+            }
+            codebox.innerHTML =result;
+        }
+
+        queryCode();
+        
+
+        change.onclick =queryCode;
+
+        enter.onclick = function(){
+            let val = code.value;
+            let codetext = codebox.innerHTML;
+
+            if(val.toLowerCase()===codetext.toLowerCase()){
+                alert("输入成功！");
+            }
+            else{
+                alert('输入错误！请重试');
+                code.value='';
+                queryCode();
+            }
+        }
+
+
+    </script>
+</body>
+</html>

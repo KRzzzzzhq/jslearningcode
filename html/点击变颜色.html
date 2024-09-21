@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击变颜色</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
+    #index {
+        width: 100%;
+        height: 100%;
+        
+    }
+    #but {
+        cursor:pointer;
+    }
+    </style>
+
+</head>
+<body>
+    <div id="index" style="background-color: white;">
+        <button id="but">点击更换BODY皮肤(白红绿蓝黑白)</button>
+    </div>
+    
+    <script>
+        let index =document.getElementById('index');
+        let but =document.getElementById('but');
+        let i =0;
+        let ary =['white','red','green','lightblue'];
+        but.onclick=function(){
+            ++i;
+            if(i===ary.length){
+                i=0;
+            }
+            console.log(i);
+            index.style.backgroundColor=ary[i];
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+        // 方法1：
+        // but.onclick=function () {
+        //     let bg = index.style.backgroundColor;
+        //     console.log(bg)
+        //     switch(bg){
+        //         case 'white':
+        //             index.style.backgroundColor='red';
+        //             break;
+        //         case 'red':
+        //             index.style.backgroundColor='green';
+        //             break;
+        //         case 'green':
+        //             index.style.backgroundColor='blue';
+        //             break;
+        //         case 'blue':
+        //             index.style.backgroundColor='black';
+        //             break;
+                    
+            
+        //         default:
+        //         index.style.backgroundColor='white';
+        //     }
+            
+            
+            
+        
+    </script>
+</body>
+</html>
